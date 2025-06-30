@@ -1,6 +1,6 @@
 # ImageCroper - Image Cropping Library for Android
 
-#### This project aims to provide an ultimate and flexible image cropping experience. Made in [Yalantis](https://yalantis.com/?utm_source=github)
+#### This project aims to provide an ultimate and flexible image cropping experience. Made in [Mobarok Hossaim](https://mobarokop.github.io)
 
 
 <img src="preview.gif" width="800" height="600">
@@ -21,7 +21,7 @@
 	}
 	```
 
-    ```  implementation 'com.github.mobarokOP:ImageCroper:1.0' ``` - lightweight general solution
+    ```  implementation 'com.github.mobarokOP:ImageCroper:1.1' ``` - lightweight general solution
 
 2. Add UCropActivity into your AndroidManifest.xml
 
