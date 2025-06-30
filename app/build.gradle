@@ -6,7 +6,7 @@ android {
         applicationId "com.sample"
         minSdkVersion 24
         targetSdk 36
-        compileSdk 35
+        compileSdk 36
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
