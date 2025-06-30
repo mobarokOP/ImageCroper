@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+
+    namespace 'com.yalantis.ucrop'
+    defaultConfig {
+        minSdkVersion 24
+        targetSdk 36
+        compileSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.annotation:annotation-jvm:1.9.1'
+    implementation 'androidx.exifinterface:exifinterface:1.4.1'
+    implementation 'androidx.fragment:fragment:1.8.8'
+    implementation 'androidx.transition:transition:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "com.squareup.okhttp3:okhttp:4.12.0"
+
+}
+
+android {
+    publishing {
+        singleVariant("release")
+    }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.mobarokop'
+            artifactId = 'ImageCroper'
+            version = '1.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}

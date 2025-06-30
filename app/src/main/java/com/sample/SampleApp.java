@@ -2,22 +2,31 @@ package com.sample;
 
 import android.app.Application;
 
-import com.downloader.PRDownloader;
-import com.downloader.PRDownloaderConfig;
+import com.yalantis.ucrop.UCropHttpClientStore;
 
-/**
- * Created by amitshekhar on 13/11/17.
- */
+import java.util.Collections;
+
+import okhttp3.ConnectionSpec;
+import okhttp3.OkHttpClient;
 
 public class SampleApp extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
-        PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
-                .setDatabaseEnabled(true)
-                .build();
-        PRDownloader.initialize(this, config);
+        setUcropHttpClient();
     }
 
+    private void setUcropHttpClient() {
+        ConnectionSpec cs = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+            .allEnabledCipherSuites()
+            .allEnabledTlsVersions()
+            .build();
+
+        OkHttpClient client = new OkHttpClient.Builder()
+            .connectionSpecs(Collections.singletonList(cs))
+            .build();
+
+        UCropHttpClientStore.INSTANCE.setClient(client);
+    }
 }
